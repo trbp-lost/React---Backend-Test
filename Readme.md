@@ -3,6 +3,7 @@ example :
 1. cd fe3
 2. npm install
 
-** Second Start example
+** Second To run it 
+example
 1. cd fe3
 2. npm start
