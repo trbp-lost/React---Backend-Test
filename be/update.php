@@ -2,7 +2,7 @@
 header('Content-Type: application/json'); // Mengatur header untuk mengindikasikan bahwa respon adalah JSON
 
 // Mengizinkan permintaan dari domain React yang berjalan di http://localhost:3000
-header('Access-Control-Allow-Origin: http://localhost:8080');
+header('Access-Control-Allow-Origin: http://localhost:3000');
 
 // Mengizinkan metode HTTP yang diizinkan
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
