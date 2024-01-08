@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import Notification from "./Notification";
 
 function FormEditData() {
-  const [npm, setNpm] = useState("");
-  const [nama, setNama] = useState("");
-  const [kelas, setKelas] = useState("");
+  const [nokamar, setNpm] = useState("");
+  const [penghuni, setNama] = useState("");
+  const [harga, setKelas] = useState("");
   const [msg, setMsg] = useState(""); // Menyimpan pesan kesalahan atau sukses
   const [isError, setIsError] = useState(false);
   const { id } = useParams();
@@ -15,13 +15,13 @@ function FormEditData() {
     const getData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/laravel/laravel-10/pweb/be/read_by_id.php/${id}`
+          `http://localhost:8080/laravel/laravel-10/pweb/be2/read_by_id.php/${id}`
         );
 
         // Inisialisasi nilai input dengan nilai dari server
-        setNpm(response.data.data.npm);
-        setNama(response.data.data.nama);
-        setKelas(response.data.data.kelas);
+        setNpm(response.data.data.nokamar);
+        setNama(response.data.data.penghuni);
+        setKelas(response.data.data.harga);
       } catch (error) {
         console.error("Error: " + error);
       }
@@ -32,10 +32,10 @@ function FormEditData() {
   const updateMahasiswa = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/laravel/laravel-10/pweb/be/update.php/${id}`, {
-        npm: npm,
-        nama: nama,
-        kelas: kelas,
+      await axios.put(`http://localhost:8080/laravel/laravel-10/pweb/be2/update.php/${id}`, {
+        nokamar: nokamar,
+        penghuni: penghuni,
+        harga: harga,
       });
       setMsg("Data Berhasil Edit");
       setIsError(false);
@@ -60,48 +60,48 @@ function FormEditData() {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="npm"
+              htmlFor="nokamar"
             >
               NPM
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="npm"
+              id="nokamar"
               type="text"
               placeholder="NPM"
-              value={npm || ""} // Menambahkan nilai awal
+              value={nokamar || ""} // Menambahkan nilai awal
               onChange={(e) => setNpm(e.target.value)}
             />
           </div>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="nama"
+              htmlFor="penghuni"
             >
               Nama
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="nama"
+              id="penghuni"
               type="text"
               placeholder="Nama"
-              value={nama || ""} // Menambahkan nilai awal
+              value={penghuni || ""} // Menambahkan nilai awal
               onChange={(e) => setNama(e.target.value)}
             />
           </div>
           <div className="mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="kelas"
+              htmlFor="harga"
             >
-              Kelas
+              harga
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="kelas"
+              id="harga"
               type="text"
-              placeholder="Kelas"
-              value={kelas || ""} // Menambahkan nilai awal
+              placeholder="harga"
+              value={harga || ""} // Menambahkan nilai awal
               onChange={(e) => setKelas(e.target.value)}
             />
           </div>
@@ -112,6 +112,12 @@ function FormEditData() {
             >
               Edit Data
             </button>
+            <a
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              href="/data_kost"
+            >
+              Cancel
+            </a>
           </div>
         </form>
       </div>

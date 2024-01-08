@@ -44,7 +44,7 @@ const NavbarComponent = () => {
               <li className="nav-item">
                 <a
                   className="px-3 py-2 flex items-center text-md leading-snug text-purple-700 hover:opacity-75"
-                  href="/data_mhs"
+                  href="/data_kost"
                 >
                   {/* <i className="fab fa-twitter text-lg leading-lg text-purple-700 opacity-75"></i> */}
                   <span className="ml-2">Data Penghuni Kost</span>

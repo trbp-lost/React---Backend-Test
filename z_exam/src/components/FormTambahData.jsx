@@ -3,9 +3,9 @@ import axios from "axios";
 import Notification from "./Notification";
 
 function FormTambahData() {
-  const [npm, setNpm] = useState("");
-  const [nama, setNama] = useState("");
-  const [kelas, setKelas] = useState("");
+  const [nokamar, setNpm] = useState("");
+  const [penghuni, setNama] = useState("");
+  const [harga, setKelas] = useState("");
   const [msg, setMsg] = useState(""); // Menyimpan pesan kesalahan atau sukses
   const [isError, setIsError] = useState(false);
 
@@ -13,14 +13,15 @@ function FormTambahData() {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("npm", npm);
-    formData.append("nama", nama);
-    formData.append("kelas", kelas);
+    formData.append("nokamar", nokamar);
+    formData.append("penghuni", penghuni);
+    formData.append("harga", harga);
 
     try {
-      await axios.post("http://localhost:8080/laravel/laravel-10/pweb/be/create.php", formData);
+      await axios.post("http://localhost:8080/laravel/laravel-10/pweb/be2/create.php", formData);
       setMsg("Data Berhasil Ditambah");
       setIsError(false);
+      window.location.href = '/data_kost';
     } catch (error) {
       if (error.response) {
         setMsg("Data Gagal Ditambah");
@@ -42,48 +43,48 @@ function FormTambahData() {
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="npm"
+              htmlFor="nokamar"
             >
-              NPM
+              No Kamar
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="npm"
+              id="nokamar"
               type="text"
-              placeholder="NPM"
-              value={npm}
+              placeholder="No Kamar"
+              value={nokamar}
               onChange={(e) => setNpm(e.target.value)}
             />
           </div>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="nama"
+              htmlFor="penghuni"
             >
-              Nama
+              Nama Penghuni
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="nama"
+              id="penghuni"
               type="text"
-              placeholder="Nama"
-              value={nama}
+              placeholder="Nama Penghuni"
+              value={penghuni}
               onChange={(e) => setNama(e.target.value)}
             />
           </div>
           <div className="mb-6">
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
-              htmlFor="kelas"
+              htmlFor="harga"
             >
-              Kelas
+              Harga Kamar
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="kelas"
+              id="harga"
               type="text"
-              placeholder="Kelas"
-              value={kelas}
+              placeholder="Harga Kamar"
+              value={harga}
               onChange={(e) => setKelas(e.target.value)}
             />
           </div>

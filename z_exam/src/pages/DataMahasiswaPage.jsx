@@ -14,7 +14,7 @@ const DataMahasiswaPage = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/laravel/laravel-10/pweb/be/read.php");
+      const response = await axios.get("http://localhost:8080/laravel/laravel-10/pweb/be2/read.php");
       if (response.data.data.length >= 0) {
         setMahasiswaData(response.data.data);
         console.log(response.data.data);
@@ -25,7 +25,7 @@ const DataMahasiswaPage = () => {
   };
   const deleteMhs = async (mhsId) => {
     try {
-      await axios.delete(`http://localhost:8080/laravel/laravel-10/pweb/be/delete.php/${mhsId}`);
+      await axios.delete(`http://localhost:8080/laravel/laravel-10/pweb/be2/delete.php/${mhsId}`);
       setMsg("Data Delete Success");
       setIsError(false);
     } catch (error) {
@@ -68,9 +68,9 @@ const DataMahasiswaPage = () => {
               mahasiswaData.map((item, index) => (
                 <tr key={item.id} className="bg-white">
                   <td className="border p-2">{index + 1}</td>
-                  <td className="border p-2">{item.npm}</td>
-                  <td className="border p-2">{item.nama}</td>
-                  <td className="border p-2">{item.kelas}</td>
+                  <td className="border p-2">{item.nokamar}</td>
+                  <td className="border p-2">{item.penghuni}</td>
+                  <td className="border p-2">{item.harga}</td>
                   <td className="border p-2">
                     <div className="grid grid-cols-2 text-center gap-2 px-2">
                       <a
